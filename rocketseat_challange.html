@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h5{
+            text-align: center;
+        }
+
+        input{
+            margin: 0 45.5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+
+    <script>    
+        var x;
+        while(!validateX("Inform an number")) validateX("Inform an number");
+
+        function validateX(text) {
+            x = window.prompt(text);
+            if (!parseInt(x)) return false;
+            return true;
+        }
+
+        var y;
+
+        while(!validateY("Inform an other number:")) validateY("Inform an other number:");
+
+        function validateY(text) {
+            y = window.prompt(text);
+            if (!parseInt(y)) return false;
+            
+            return true;
+            
+        }
+
+        pares(x, y);
+
+        function pares(x, y) {
+            var maior, menor;
+            if (parseInt(x) > parseInt(y)) {
+                maior = parseInt(x);
+                menor = parseInt(y);
+
+            }else if (parseInt(y) > parseInt(x)){ 
+                maior = parseInt(y);
+                menor = parseInt(x);
+            }else{
+                validateY("Escolha um número diferente");
+            }
+
+            for (var i = menor + 1; i < maior; i++) {
+                if (!(i % 2)){ 
+                    var number = document.createElement("h5");
+                    number.setAttribute("style","font-size:12pt; margin:15px; ");
+                    number.innerHTML= i+ " ";
+                    document.querySelector("div").appendChild(number);
+                }
+            }
+            var reset = document.createElement("input");
+            reset.setAttribute("type", "reset");
+            reset.setAttribute("onClick", "location.reload();");
+            document.querySelector("div").appendChild(reset);
+
+        }
+    </script>
+</body>
+
+</html>
